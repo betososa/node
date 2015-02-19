@@ -11,12 +11,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get ('/hola', function(request, response, next){
+router.get ('/stocks', function(request, response, next){
 	MongoClient.connect( 'mongodb://127.0.0.1:27017/finance', function( err, db ) {
 		var collection = db.collection( 'stocks' );
-		collection.find().toArray(function(err, items) {
-			console.dir(items);
-			response.render('report', {data : items});
+		collection.find().limit(1).toArray(function(err, items) {
+			console.log(JSON.stringify(items[0].list.resources));
+			response.render('report', {data : items[0].list.resources});
 		})
 	})
 })
