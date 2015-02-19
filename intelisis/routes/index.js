@@ -7,9 +7,9 @@ var request = require('request');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 router.get ('/stocks', function(request, response, next){
 	MongoClient.connect( 'mongodb://127.0.0.1:27017/finance', function( err, db ) {
@@ -29,5 +29,9 @@ router.get ('/timer', function(request, response, next){
 		})
 	})
 })
+
+router.get('*', function(req, res, next) {
+  res.render('error', { message: 'Not Found', status: '404' });
+});
 
 module.exports = router;

@@ -11,6 +11,7 @@
   "dependencies": {
     "cron": "^1.0.6",
     "express": "^4.11.2",
-    "request": "^2.53.0"
+    "request": "^2.53.0",
+    "mongodb": "~1.4.31"
   }
 }
