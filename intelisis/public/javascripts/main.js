@@ -3,27 +3,23 @@ new Vue({
     data: {
     	"stocks":data
     },
+  // Function called when vuejs instance is created, remember there is a ready
   created: function () {
-  	setInterval(this.fetchData, 14*1000);
-  	console.dir(this.stocks);
-  	
+    // every 30 seconds we will fetch new data
+  	setInterval(this.fetchData, 30*1000);
   },
-    methods:{
-        fetchData: function() {
-        	console.log('=====');
-        	console.log(this.stocks);
-        	console.log('=====');
-        	var xhr = new XMLHttpRequest();
-        	var self = this;
-        	xhr.open('GET', '/timer');
-        	xhr.onload = function() {
-        		self.stocks = JSON.parse(xhr.responseText);
-		    	console.log('******');
-		    	console.log(this.stocks);
-		    	console.log('******');
-        		// console.log('?????' + JSON.stringify(xhr.responseText));
-        	}
-        	xhr.send();
+
+  methods: {
+    // function to make an ajax call
+    fetchData: function () {
+      var self = this;
+      $.ajax({
+        url: "/timer",
+        success: function(data){
+          self.stocks = data.data;
         }
+      })
     }
+  }
 });
+// Vue.config.debug = true
