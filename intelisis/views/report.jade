@@ -2,8 +2,6 @@ extends layout
 block content
 	script!="window.data="+JSON.stringify(data)+";"
 	#elem
-		ul
-			li(v-repeat="field : stocks") {{field.resource.fields.name}}
 		table.table
 			caption Resumen de las acciones
 			thead

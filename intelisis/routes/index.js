@@ -21,4 +21,14 @@ router.get ('/stocks', function(request, response, next){
 	})
 })
 
+router.get ('/timer', function(request, response, next){
+	MongoClient.connect( 'mongodb://127.0.0.1:27017/finance', function( err, db ) {
+		var collection = db.collection( 'stocks' );
+		collection.find().limit(1).toArray(function(err, items) {
+			console.log(JSON.stringify(items[0].list.resources));
+			response.json({data:items[0].list.resources});
+		})
+	})
+})
+
 module.exports = router;
