@@ -1,23 +1,11 @@
 extends layout
 block content
-	//- We need to pass some variables to javascript
-	script!="window.data="+JSON.stringify(data)+";"
-	#elem
-		table.table
-			caption Resumen de las acciones
-			thead
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.name}}
-			tbody
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.price}}
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.symbol}}
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.ts}}
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.type}}
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.utctime}}
-				tr
-					th(v-repeat="field : stocks") {{field.resource.fields.volume}}
+	div#main-region.container
+		p Here is static content, will be replaced by marionette
+
+	script#static-template(type="text/template")
+		p Rendered by marionette
+
+	script#stock-template(type="text/template")
+		p <%- name %>
+
