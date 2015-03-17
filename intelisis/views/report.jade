@@ -7,5 +7,28 @@ block content
 		p Rendered by marionette
 
 	script#stock-template(type="text/template")
-		p <%- name %>
+		p!='<%- name %>'
+
+	script#table-template(type="text/template")
+		table.table
+			caption Resumen de las acciones
+			thead
+				tr
+			tbody
+				tr
+
+	script#header-template(type="text/template")
+		th!='<%- name %>'
+
+	script#body-template(type="text/template")
+		th!='<%- price %>'
+		th!='<%- symbol %>'
+		th!='<%- ts %>'
+		th!='<%- type %>'
+		th!='<%- utctime %>'
+
+
+
+
+
 

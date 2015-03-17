@@ -14,6 +14,9 @@ StockViewer.StockView = Marionette.ItemView.extend({
 
 StockViewer.Stock = Backbone.Model.extend({})
 
+Stocks = Backbone.Collection.extend(
+  model: StockViewer.Stock)
+
 StockViewer.on("start", function(options){
   console.log("hola");
   var apple = new StockViewer.Stock({
